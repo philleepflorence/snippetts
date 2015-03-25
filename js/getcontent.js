@@ -1,6 +1,7 @@
 /* 
-  Dependencies jQuery 1.7+
+  Dependencies jQuery 1.7+ ( $.text() and $.get() )
   Use: Get the value of a DOM element without having to know the type of element.
+  @parameters: obj (DOM element), param (boolean:true - get text or string:DOM Attribute)
   More types to come in the future.
 */
 
@@ -16,21 +17,20 @@ var getContent		= function(obj, param)
 	var _type		= obj.getAttribute('type');
 	var _value		= '';
 	var getText		= param === true ? true : false;
-	var full		= param === true ? true : false;
 	
 	switch(_tagName)
 	{
 		case 'input':
 			if(_type === 'checkbox' || _type === 'radio') _value = obj.checked ? 1 : '';
-			else _value = obj.value.trim();
+			else _value = obj.value;
 		break;
 		
 		case 'textarea':
-			_value = obj.value.trim();
+			_value = obj.value;
 		break;
 		
 		case 'select':
-			_value = obj.options[obj.selectedIndex].value.trim();
+			_value = obj.options[obj.selectedIndex].value;
 		break;
 		
 		case 'img':
@@ -46,8 +46,8 @@ var getContent		= function(obj, param)
 		break;
 		
 		default:
-			_value = getText ? $(obj).text().trim() : obj.innerHTML.trim();
+			_value = getText ? $(obj).text() : obj.innerHTML;
 	}
 	
-	return _value;		
+	return _value.trim();		
 };
