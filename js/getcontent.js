@@ -14,9 +14,9 @@ var getContent		= function(obj, param)
 	if(typeof param === 'string' && obj.getAttribute(param)) return obj.getAttribute(param);
 		
 	var _tagName	= obj.tagName.toLowerCase();
-	var _type	= obj.getAttribute('type');
-	var _value	= '';
-	var getText	= param === true ? true : false;
+	var _type	    = obj.getAttribute('type');
+	var _value	    = '';
+	var getText	    = param === true ? true : false;
 	
 	switch(_tagName)
 	{
